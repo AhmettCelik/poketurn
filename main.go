@@ -4,21 +4,21 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-)
 
-func start(isGameOn bool, scanner bufio.Scanner) {
-	for isGameOn {
-		fmt.Println("Welcome to poketurn!")
-		fmt.Println("type help to see commands.")
-		fmt.Print(">")
-		scanner.Scan()
-		input := scanner.Text()
-		fmt.Print(input)
-	}
-}
+	"github.com/AhmettCelik/poketurn/internal/commands"
+)
 
 func main() {
 	isGameOn := true
 	scanner := bufio.NewScanner(os.Stdin)
-	start(isGameOn, *scanner)
+	cmds := map[string]commands.CliCommand{}
+	commands.LoadDefaults(cmds)
+
+	fmt.Println("Welcome to poketurn!")
+	fmt.Println("type help to see commands.")
+	for isGameOn {
+		fmt.Print(">")
+		scanner.Scan()
+		input := scanner.Text()
+	}
 }
