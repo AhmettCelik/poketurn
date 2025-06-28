@@ -16,9 +16,22 @@ func main() {
 
 	fmt.Println("Welcome to poketurn!")
 	fmt.Println("type help to see commands.")
+
 	for isGameOn {
 		fmt.Print(">")
 		scanner.Scan()
 		input := scanner.Text()
+
+		cmd, exists := cmds[input]
+		if !exists {
+			fmt.Println("Unknown command")
+			return
+		}
+
+		err := cmd.Callback()
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
 	}
 }

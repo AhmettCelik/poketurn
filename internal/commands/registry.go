@@ -1,10 +1,10 @@
 package commands
 
-func Register(cmds map[string]CliCommand, name string, description string, callback func(name string) error) {
+func Register(cmds map[string]CliCommand, name string, description string, callback func() error) {
 	cmds[name] = CliCommand{
-		name:        name,
-		description: description,
-		callback:    callback,
+		Name:        name,
+		Description: description,
+		Callback:    callback,
 	}
 }
 
