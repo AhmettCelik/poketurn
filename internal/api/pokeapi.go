@@ -25,9 +25,8 @@ func FetchPokemon(name string, id int) (models.Pokemon, error) {
 		return pkmn, err
 	}
 
-	decoder := json.NewDecoder(res.Body)
-	if err := decoder.Decode(&pkmn); err != nil {
-		fmt.Printf("Error decoding json: %v\n", err)
+	pkmn, err = decodeResponse[models.Pokemon](res.Body)
+	if err != nil {
 		return pkmn, err
 	}
 
