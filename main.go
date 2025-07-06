@@ -6,12 +6,13 @@ import (
 	"os"
 
 	"github.com/AhmettCelik/poketurn/internal/commands"
+	"github.com/AhmettCelik/poketurn/internal/models"
 )
 
 func main() {
 	isGameOn := true
 	scanner := bufio.NewScanner(os.Stdin)
-	cmds := map[string]commands.CliCommand{}
+	cmds := map[string]models.Command{}
 	commands.LoadDefaults(cmds)
 
 	fmt.Println("Welcome to poketurn!")

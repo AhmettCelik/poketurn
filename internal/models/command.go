@@ -1,6 +1,6 @@
-package commands
+package models
 
-type CliCommand struct {
+type Command struct {
 	Name        string
 	Description string
 	Callback    func() error
