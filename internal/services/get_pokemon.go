@@ -6,10 +6,9 @@ import (
 )
 
 func GetPokemonByName(name string) (models.Pokemon, error) {
-	pkmn, err := api.FetchPokemon(name, 0)
-	if err != nil {
-		return pkmn, err
-	}
+	return api.FetchPokemon(name, 0)
+}
 
-	return pkmn, nil
+func GetPokemonByID(id int) (models.Pokemon, error) {
+	return api.FetchPokemon("", id)
 }
