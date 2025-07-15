@@ -35,3 +35,25 @@ func FetchPokemon(name string, id int) (models.Pokemon, error) {
 
 	return pkmn, nil
 }
+
+func FetchAllPokemon() (models.AllPokemons, error) {
+	url := "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1302"
+	allPkmn := models.AllPokemons{}
+
+	res, err := http.Get(url)
+	if err != nil {
+		fmt.Printf("Error getting response : %v\n", err)
+		return allPkmn, err
+	}
+
+	allPkmn, err = decodeResponse[models.AllPokemons](res.Body)
+	if err != nil {
+		return allPkmn, err
+	}
+
+	if res.StatusCode > 299 {
+		return allPkmn, fmt.Errorf("Response failed with status code: %d\n", res.StatusCode)
+	}
+
+	return allPkmn, nil
+}

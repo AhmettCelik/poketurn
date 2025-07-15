@@ -12,3 +12,7 @@ func GetPokemonByName(name string) (models.Pokemon, error) {
 func GetPokemonByID(id int) (models.Pokemon, error) {
 	return api.FetchPokemon("", id)
 }
+
+func GetAllPokemons() (models.AllPokemons, error) {
+	return api.FetchAllPokemon()
+}
