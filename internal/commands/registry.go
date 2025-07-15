@@ -12,4 +12,5 @@ func Register(cmds map[string]models.Command, name string, description string, c
 
 func LoadDefaults(cmds map[string]models.Command) {
 	Register(cmds, "help", "Shows commands and their descriptions.", Help)
+	Register(cmds, "market", "opens market.", Market)
 }

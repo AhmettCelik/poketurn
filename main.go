@@ -26,7 +26,6 @@ func main() {
 		cmd, exists := cmds[input]
 		if !exists {
 			fmt.Println("Unknown command")
-			fmt.Println("Unknown command")
 			return
 		}
 
